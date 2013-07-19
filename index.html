@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body, #map-canvas {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+var map;
+
+//initialize the map
+function initialize() {
+  var mapOptions = {
+    zoom: 5,
+    center: new google.maps.LatLng(37.758636,-122.419088),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+
+  /* WRITE YOUR CODE TO ADD THE MARKERS */
+  addMarker();
+
+
+}
+
+function addMarker() {
+  var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+  var mapOptions = {
+    zoom: 4,
+    center: myLatlng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  }
+  //var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title: 'Hello World!'
+  });
+}
+
+// //adding a marker for location
+// function addMarker(loc){
+//   console.log(loc);
+//   var name = loc.name;
+//   var myLatlng = new google.maps.LatLng(loc.lat, loc.lng)
+
+//   var marker = new google.maps.Marker({
+//     position: myLatlng,
+//     map: map,
+//     title: name
+//   });
+
+//   return marker;
+
+// }
+
+ 
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>
+
+
+
+
+
+<!-- function initialize() {
+  var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+  var mapOptions = {
+    zoom: 4,
+    center: myLatlng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  }
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title: 'Hello World!'
+  });
+} -->
+
+<!-- // Add the taco info to the list
+  function addToList(info){
+    var html = "<div class='info-item taco-click' data-id='"+info.idx+"'>"
+
+    html += "<div class='name'>";
+    html += info.name;
+    html += "</div>"
+
+    html += "<div class='addr'>"
+    html += info.addr;
+    html += "</div>";
+
+    html += "My Rating: " + "<span class='rr'>"+info.rating+"</span>";
+    html += "<br/>";
+    html += "Visits: " + "<span class='vv'>"+info.num_visits+"</span>";
+
+    html += "</div>";
+
+    var container_html = "<div class='info-item-container'>" + html + "</div>";
+    $("#taco-list-info").append(container_html);
+  }
+
+  // Set the box to open when you click this marker
+  function getClickBox(info){
+    var rating = info.rating;
+
+    var html = "<div class='info-item taco-box "+info.hash+"' data-id='"+info.idx+"'><div class='name'>";
+
+    html += info.name;
+    html += "</div><div class='addr'>";
+    html += info.addr;
+    html += "</div><div class='rating'>";
+    html += "My Rating: " + "<span class='rr'>"+rating+"</span> <div class='slider'></div>";
+    html += "<div class='visit-wrap'><a href='#' class='btn btn-primary visit-btn'>Visited!</a>Vists: <span class='num-visits'>"+info.num_visits+"</span></div>";
+    html += "</div></div>";
+
+    var infowindow = new google.maps.InfoWindow({
+      content: html,
+      size: new google.maps.Size(50,50)
+    });
+
+    return infowindow;
+  }
+
+  function clickEvents(info){
+
+    // When a taco shop is clicked, focus in
+    function showPopup(info){
+        closeAll();
+        if(!info.open){
+          info.infowindow.open(map, info.marker);
+          makeSliders(info);
+          visitedButton(info);
+        }else{
+          info.infowindow.close();
+        }
+        info.open = !info.open;
+    }
+
+    // For clicking on a marker
+    google.maps.event.addListener(info.marker, 'click', function(event) {
+        showPopup(info);
+    });
+
+    // For clicking on the side list
+    $(".taco-click[data-id='"+info.idx+"']").click(function(){
+        showPopup(info);
+    });
+  }
+
+
+
+  function addTacoPlaces(){
+    for(var i = 0; i < TACO_PLACES.length; i++){
+        var cur = TACO_PLACES[i];
+        cur.idx = i;
+        cur.marker = addMarker(cur, i);
+        cur.rating = getRating(cur.hash);
+        cur.num_visits = getVisits(cur.hash);
+        cur.infowindow = getClickBox(cur);
+        cur.listDiv = addToList(cur);
+
+        clickEvents(cur);
+    }
+    console.log(TACO_PLACES);
+  }
+
+  initialize();
+  addTacoPlaces();
+  handleRegistrationButton();
+  console.log(TACO_PLACES); -->
