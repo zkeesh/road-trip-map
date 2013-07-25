@@ -14,57 +14,411 @@
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script>
 var map;
-
+//var geocoder;
 //initialize the map
 function initialize() {
+  //geocoder = new google.maps.Geocoder();
+
   var mapOptions = {
     zoom: 5,
-    center: new google.maps.LatLng(37.758636,-122.419088),
+    center: new google.maps.LatLng(40, -100),
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
 
-
-  /* WRITE YOUR CODE TO ADD THE MARKERS */
   addMarker();
 
-
 }
 
-function addMarker() {
-  var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
-  var mapOptions = {
-    zoom: 4,
-    center: myLatlng,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  }
-  //var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  //var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
 
-  var marker = new google.maps.Marker({
+  //map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  // var marker = new google.maps.Marker({
+  //       position: myLatlng,
+  //       map: map,
+  //       title: 'Hello World!'
+  // });
+
+//   //
+//   //codeAddress('Deerfield, IL');
+//   //codeAddress('Yazoo City, MS');
+
+//   var delay = 100;
+
+//   var locations = [
+//     "Compton, CA",
+//     "El Segundo, CA",
+//     "Colorado Springs, CO",
+//     "Tulsa, OK",
+//     "Hughes, AR",
+//     "Yazoo City,MS",
+//     "Metairie, LA",
+//     "New Orleans, LA",
+//     "Smyrna, Georgia",
+//     "Hilton Head Island, SC",
+//     "Waldorf, MD",
+//     "Waldorf, MD",
+//     "Capitol Heights, MD",
+//     "Brooklandville, MD",
+//     "Philadelphia,PA",
+//     "Newark, NJ",
+//     "Brookline, MA",
+//     "Marshfield, MA",
+//     "Bourne, MA",
+//     "Cape Elizabeth, ME",
+//     "Cumberland, ME",
+//     "St. Johnsbury, VT",
+//     "Chicago, IL",
+//     "Elk Grove Village, IL",
+//     "Spring Grove, IL",
+//     "Portland, OR",
+//     "Sacremento, CA"
+//   ];
+
+//   console.log("the number of schools is " + locations.length);
+
+// var i = 0;
+
+//   var loop = setInterval(function(){
+//     codeAddress(locations[i]);
+//     i++;
+//     if (i == locations.length) {
+//       clearInterval(loop);
+//     }
+//   },1000);
+
+// var LOCATIONS = [
+//   {
+//     "lat": 33.8958492,
+//     "lng": -118.2200712,
+//     "city": "Compton, CA",
+//     "name": "Compton High School" 
+//   },
+//   {
+//     "lat": 33.9191799,
+//     "lng": -118.4164652,
+//     "city": "El Segundo, CA",
+//     "name": "El Segundo High School"
+//   },
+//   {
+//     "lat": 38.8338816,
+//     "lng": -104.8213634,
+//     "city": "Colorado Springs, CO",
+//     "name": "Pikes Peak Prep"
+//   },
+//   {
+//     "lat": 36.1539816,
+//     "lng": -95.992775,
+//     "city": "Tulsa, OK",
+//     "name": "Union High School"
+//   },
+//   {
+//     "lat": 34.9492613, 
+//     "lng": -90.47149050000002,
+//     "city": "Hughes, AR",
+//     "name": "Hughes High School"
+//   },
+//   {
+//     "lat": 32.8551326, 
+//     "lng": -90.4056468,
+//     "city": "Yazoo City,MS",
+//     "name": "Woolfolk Middle School"
+//   },
+//   {
+//     "lat": 29.9840922, 
+//     "lng": -90.15285189999997, 
+//     "city": "Metairie, LA",
+//     "name": "Grace King High School"
+//   },
+//   {
+//     "lat": 29.95106579999999, 
+//     "lng": -90.0715323, 
+//     "city": "New Orleans, LA",
+//     "name": "Sci Academy"
+//   },
+//   {
+//     "lat": 33.8839926, 
+//     "lng": -84.51437609999999, 
+//     "city": "Smyrna, GA",
+//     "name": "Campbell High School"
+//   },
+//   {
+//     "lat": 32.216316, 
+//     "lng": -80.75260800000001, 
+//     "city": "Hilton Head Island, SC",
+//     "name": "Hilton Head Island High School"
+//   },
+//   {
+//     "lat": 38.6265124, 
+//     "lng": -76.91054830000002, 
+//     "city": "Waldorf, MD",
+//     "name": "Westlake High School"
+//   },
+//   //this school is in the same city
+//     {
+//     "lat": 38.6265124, 
+//     "lng": -76.91054830000002, 
+//     "city": "Waldorf, MD",
+//     "name": "North Point High School"
+//   },
+//   {
+//     "lat": 38.8851122, 
+//     "lng": -76.91580679999998, 
+//     "city": "Capitol Heights, MD",
+//     "name": "Fairmont Heights High School"
+//   },
+//   {
+//     "lat": 39.420384, 
+//     "lng": -76.6699711,  
+//     "city": "Brooklandville, MD",
+//     "name": "St. Paul's School"
+//   },
+//   {
+//     "lat": 39.952335, 
+//     "lng": -75.16378900000001, 
+//     "city": "Philadelphia,PA", 
+//     "name": "Crossroads Academy"
+//   },
+//   {
+//     "lat": 40.735657, 
+//     "lng": -74.1723667 
+//     "city": "Newark, NJ",
+//     "name": "North Star Academy Charter School"
+//   },
+//   //this city has changed
+//   {
+//     "lat": 42.33176419999999, 
+//     "lng": -71.12116349999997, 
+//     "city": "Brookline, MA",
+//     "name": "Beaver Country Day School"
+//   },
+//   {
+//     "lat": 42.0917453, 
+//     "lng": -70.7055871, 
+//     "city": "Marshfield, MA",
+//     "name": "Marshfield High School"
+//   },
+//   {
+//     "lat": 41.74127730000001, 
+//     "lng": -70.59893249999999, 
+//     "city": "Bourne, MA",
+//     "name": "Upper Cape Cod Regional Technical High School"
+//   },
+//   {
+//     "lat": 43.563696, 
+//     "lng": -70.20004670000003, 
+//     "city": "Cape Elizabeth, ME",
+//     "name": "Cape Elizabeth High School"
+//   },
+//   {
+//     "lat": 43.7685392, 
+//     "lng": -70.23285450000003,
+//     "city": "Cumberland, ME",
+//     "name": "Greely High School"
+//   },  
+//   {
+//     "lat": 44.4192627, 
+//     "lng": -72.01511829999998, 
+//     "city": "St. Johnsbury, VT",
+//     "name": "St. Johnsbury Academy"
+//   },  
+//   {
+//     "lat": 41.8781136, 
+//     "lng": -87.62979819999998, 
+//     "city": "Chicago, IL",
+//     "name": "Mather High School"
+//   },  
+//   {
+//     "lat": 42.0039178, 
+//     "lng": -87.97034610000003, 
+//     "city": "Elk Grove Village, IL",
+//     "name": "Elk Grove High School"
+//   },  
+//   {
+//     "lat": 42.4436308, 
+//     "lng": -88.23647749999998, 
+//     "city": "Spring Grove, IL",
+//     "name": "Homeschool"
+//   },
+//   {
+//     "lat": 45.5234515, 
+//     "lng": -122.6762071, 
+//     "city": "Portland, OR",
+//     "name": "Cathedral School"
+//   },  
+//   {
+//     "lat": 38.5815719, 
+//     "lng": -121.49439960000001, 
+//     "city": "Sacremento, CA",
+//     "name": "The Met Sacramento"
+//   }
+// ];
+
+
+
+
+//add a marker to the map
+function addMarker(){
+
+  //var name = name;
+  
+  var lats = [33.8958492, 33.9191799];
+  var lngs = [-118.2200712, -118.4164652];
+
+
+  //for(var i = 0; i < lats.length; i++){
+    var myLatlng = new google.maps.LatLng(lats[1], lngs[1]);
+
+    console.log(lats[1], lngs[1]);
+
+    var marker = new google.maps.Marker({
       position: myLatlng,
       map: map,
-      title: 'Hello World!'
-  });
+    });
+    return marker;
+  
+  //}
+
+
+  // var myLatlng = new google.maps.LatLng(33.8958492, -118.2200712);
+
+  // var marker = new google.maps.Marker({
+  //   position: myLatlng,
+  //   map: map,
+  //   //title: 'Hello World'
+
+  // });
+
+  // console.log("about to do a marker");
+  // return marker;
+  
+
 }
 
-// //adding a marker for location
-// function addMarker(loc){
-//   console.log(loc);
-//   var name = loc.name;
-//   var myLatlng = new google.maps.LatLng(loc.lat, loc.lng)
+//addMarker();
 
-//   var marker = new google.maps.Marker({
-//     position: myLatlng,
-//     map: map,
-//     title: name
-//   });
 
-//   return marker;
+  // // Add the marker on the map for this place
+  // //function addMarker(location, id?)
+  // function addMarker(location){
+  //   //console.log(tacoPlace);
+  //   var name = location.name;
+  //   var myLatlng = new google.maps.LatLng(location.lat, location.lng);
+
+  //   var marker = new google.maps.Marker({
+  //       position: myLatlng,
+  //       map: map,
+  //       title: name
+  //   });
+
+  //   return marker;
+  // }
+
+
+
+
+
+//   //make array of locations to add for markers
+
 
 // }
 
- 
+// function codeAddress(address) {
+
+//   geocoder.geocode( { 'address': address}, function(results, status) {
+//     // console.log(results);
+
+//     if (status == google.maps.GeocoderStatus.OK) {
+//       map.setCenter(results[0].geometry.location);
+//       var marker = new google.maps.Marker({
+//           map: map,
+//           position: results[0].geometry.location
+//       });
+//       console.log(results[0].geometry.location.jb);
+//       console.log(results[0].geometry.location.kb);
+//       console.log("---");
+//     } else {
+//       alert('Geocode was not successful for the following reason: ' + status);
+//     }
+//   });
+// }
+
+  // // Set the box to open when you click this marker
+  // function getClickBox(info){
+  //   var rating = info.rating;
+
+  //   var html = "<div class='info-item taco-box "+info.hash+"' data-id='"+info.idx+"'><div class='name'>";
+
+  //   html += info.name;
+  //   html += "</div><div class='addr'>";
+  //   html += info.addr;
+  //   html += "</div><div class='rating'>";
+  //   html += "My Rating: " + "<span class='rr'>"+rating+"</span> <div class='slider'></div>";
+  //   html += "<div class='visit-wrap'><a href='#' class='btn btn-primary visit-btn'>Visited!</a>Vists: <span class='num-visits'>"+info.num_visits+"</span></div>";
+  //   html += "</div></div>";
+
+  //   var infowindow = new google.maps.InfoWindow({
+  //     content: html,
+  //     size: new google.maps.Size(50,50)
+  //   });
+
+  //   return infowindow;
+  // }
+
+
+
+
+
+  // function clickEvents(info){
+
+  //   // When a taco shop is clicked, focus in
+  //   function showPopup(info){
+  //       closeAll();
+  //       if(!info.open){
+  //         info.infowindow.open(map, info.marker);
+  //         makeSliders(info);
+  //         visitedButton(info);
+  //       }else{
+  //         info.infowindow.close();
+  //       }
+  //       info.open = !info.open;
+  //   }
+
+  //   // For clicking on a marker
+  //   google.maps.event.addListener(info.marker, 'click', function(event) {
+  //       showPopup(info);
+  //   });
+
+  //   // For clicking on the side list
+  //   $(".taco-click[data-id='"+info.idx+"']").click(function(){
+  //       showPopup(info);
+  //   });
+  // }
+
+
+
+
+
+
+
+  // // Add the marker on the map for this place
+  // //function addMarker(location, id?)
+  // function addMarker(location){
+  //   //console.log(tacoPlace);
+  //   var name = location.name;
+  //   var myLatlng = new google.maps.LatLng(location.lat, location.lng);
+
+  //   var marker = new google.maps.Marker({
+  //       position: myLatlng,
+  //       map: map,
+  //       title: name
+  //   });
+
+  //   return marker;
+  // }
+
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -74,115 +428,3 @@ google.maps.event.addDomListener(window, 'load', initialize);
     <div id="map-canvas"></div>
   </body>
 </html>
-
-
-
-
-
-<!-- function initialize() {
-  var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
-  var mapOptions = {
-    zoom: 4,
-    center: myLatlng,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  }
-  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
-  var marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      title: 'Hello World!'
-  });
-} -->
-
-<!-- // Add the taco info to the list
-  function addToList(info){
-    var html = "<div class='info-item taco-click' data-id='"+info.idx+"'>"
-
-    html += "<div class='name'>";
-    html += info.name;
-    html += "</div>"
-
-    html += "<div class='addr'>"
-    html += info.addr;
-    html += "</div>";
-
-    html += "My Rating: " + "<span class='rr'>"+info.rating+"</span>";
-    html += "<br/>";
-    html += "Visits: " + "<span class='vv'>"+info.num_visits+"</span>";
-
-    html += "</div>";
-
-    var container_html = "<div class='info-item-container'>" + html + "</div>";
-    $("#taco-list-info").append(container_html);
-  }
-
-  // Set the box to open when you click this marker
-  function getClickBox(info){
-    var rating = info.rating;
-
-    var html = "<div class='info-item taco-box "+info.hash+"' data-id='"+info.idx+"'><div class='name'>";
-
-    html += info.name;
-    html += "</div><div class='addr'>";
-    html += info.addr;
-    html += "</div><div class='rating'>";
-    html += "My Rating: " + "<span class='rr'>"+rating+"</span> <div class='slider'></div>";
-    html += "<div class='visit-wrap'><a href='#' class='btn btn-primary visit-btn'>Visited!</a>Vists: <span class='num-visits'>"+info.num_visits+"</span></div>";
-    html += "</div></div>";
-
-    var infowindow = new google.maps.InfoWindow({
-      content: html,
-      size: new google.maps.Size(50,50)
-    });
-
-    return infowindow;
-  }
-
-  function clickEvents(info){
-
-    // When a taco shop is clicked, focus in
-    function showPopup(info){
-        closeAll();
-        if(!info.open){
-          info.infowindow.open(map, info.marker);
-          makeSliders(info);
-          visitedButton(info);
-        }else{
-          info.infowindow.close();
-        }
-        info.open = !info.open;
-    }
-
-    // For clicking on a marker
-    google.maps.event.addListener(info.marker, 'click', function(event) {
-        showPopup(info);
-    });
-
-    // For clicking on the side list
-    $(".taco-click[data-id='"+info.idx+"']").click(function(){
-        showPopup(info);
-    });
-  }
-
-
-
-  function addTacoPlaces(){
-    for(var i = 0; i < TACO_PLACES.length; i++){
-        var cur = TACO_PLACES[i];
-        cur.idx = i;
-        cur.marker = addMarker(cur, i);
-        cur.rating = getRating(cur.hash);
-        cur.num_visits = getVisits(cur.hash);
-        cur.infowindow = getClickBox(cur);
-        cur.listDiv = addToList(cur);
-
-        clickEvents(cur);
-    }
-    console.log(TACO_PLACES);
-  }
-
-  initialize();
-  addTacoPlaces();
-  handleRegistrationButton();
-  console.log(TACO_PLACES); -->
